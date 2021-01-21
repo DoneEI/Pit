@@ -39,10 +39,19 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>main.java.front_end.Main</mainClass>
+                            <mainClass>front_end.Main</mainClass>
                         </manifest>
                     </archive>
 
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>

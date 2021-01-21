@@ -2,5 +2,9 @@
 Git?Pit.iml
 .idea
 
+# Test
+src/test
+
 # output directory
 target
+.pit

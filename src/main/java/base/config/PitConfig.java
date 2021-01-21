@@ -1,7 +1,7 @@
-package base.constants;
+package base.config;
 
 /**
- * 项目相关常量
+ * 项目相关配置
  * @Author: DoneEI
  * @Since: 2021/1/21 3:04 下午
  **/
