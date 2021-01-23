@@ -5,5 +5,5 @@ package base.utils;
  * @author: RealGang
  * @create: 2021-01-22 22:48
  **/
-public class SHA1Util {
+public class SHA1Utils {
 }

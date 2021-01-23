@@ -1,11 +1,13 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * Blob 对象
  * @Author: DoneEI
  * @Since: 2021/1/21 3:02 下午
  **/
-public class Blob {
+public class Blob implements Serializable {
     /**
      * 文件内容
      */

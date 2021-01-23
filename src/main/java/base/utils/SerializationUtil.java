@@ -1,6 +1,7 @@
 package base.utils;
 
 import base.exception.PitException;
+import entity.Blob;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -80,4 +81,14 @@ public class SerializationUtil {
         return null;
     }
 
+    /**
+     * @Description: 测试
+     * @Param: 
+     * @return: 
+     * @Author: RealGang
+     * @Date: 2021/1/23
+     */ 
+    public void serialTest(){
+        Blob blob = new Blob();
+    }
 }
