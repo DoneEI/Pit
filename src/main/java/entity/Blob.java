@@ -1,5 +1,7 @@
 package entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  * @Author: DoneEI
  * @Since: 2021/1/21 3:02 下午
  **/
+@Data
 public class Blob implements Serializable {
     /**
      * 文件内容
