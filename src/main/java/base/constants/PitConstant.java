@@ -8,7 +8,7 @@ package base.constants;
  **/
 
 public class PitConstant {
-    /** 命令相关**/
+    /** 命令相关 **/
 
     /**
      * 外部命令所在包名
@@ -30,12 +30,16 @@ public class PitConstant {
      */
     public static final String EXTERNAL_COMMAND_OPTIONS_PREFIX = "-";
 
-    /**  其他 **/
+    /** 其他 **/
 
     /**
      * pit仓库名字
      */
     public static final String PIT_REPOSITORY_NAME = ".pit";
 
+    /**
+     * pit支持最大文件 16MB
+     */
+    public static final long MAX_FILE_LIMIT = 16777216L;
 
 }

@@ -1,6 +1,6 @@
 package core.command.external;
 
-import base.utils.OutputUtil;
+import base.utils.OutputUtils;
 import core.command.BaseCmd;
 
 /**
@@ -26,7 +26,7 @@ public class PitCmd extends BaseCmd {
      */
     public void run(String[] args) throws Exception {
         baseLogic(() -> {
-            OutputUtil.output("Welcome for using Pit! Using pit -h for help.");
+            OutputUtils.output("Welcome for using Pit! Using pit -h for help.");
         });
     }
 }

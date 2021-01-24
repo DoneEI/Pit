@@ -4,6 +4,8 @@ Git?Pit.iml
 
 # Test
 src/test
+Test
+.pitignore
 
 # output directory
 target
