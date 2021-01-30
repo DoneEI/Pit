@@ -38,6 +38,11 @@ public class PitConstant {
     public static final String PIT_REPOSITORY_NAME = ".pit";
 
     /**
+     * 根目录
+     */
+    public static final String ROOT_DIRECTORY_NAME = "/";
+
+    /**
      * pit支持最大文件 16MB
      */
     public static final long MAX_FILE_LIMIT = 16777216L;

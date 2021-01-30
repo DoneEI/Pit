@@ -12,8 +12,7 @@ import entity.IndexTree;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * update index命令
@@ -43,7 +42,7 @@ public class UpdateIndexCmd {
                 root = new IndexTree();
 
                 root.setNodeType(IdTNodeEnum.DIRECTORY_NODE.getCode());
-                root.setFileName("");
+                root.setFileName(PitConstant.ROOT_DIRECTORY_NAME);
             }
 
             recent = new HashMap<>(2);
@@ -53,6 +52,39 @@ public class UpdateIndexCmd {
                     + Arrays.toString(e.getStackTrace()));
         }
 
+    }
+
+    /**
+     * 从index tree中删除不存在的文件
+     * 
+     * @param file
+     *            文件夹file对象
+     * @throws IOException
+     *             ioe
+     */
+    public static void deleteRemovedFiles(File file) throws IOException {
+        if (!file.isDirectory() || file.list() == null) {
+            return;
+        }
+
+        String path = FileUtils.getCanonicalRelativePath(file, PitConfig.PIT_REPOSITORY);
+
+        IndexTree thisNode;
+
+        // 对于其子文件而言,file文件路径即父路径
+        if (recent.containsKey(path)) {
+            thisNode = recent.get(path);
+        } else {
+            thisNode = searchParent(path);
+        }
+
+        Set<String> t1 = thisNode.getChild().keySet();
+        Set<String> t2 = new HashSet<>(Arrays.asList(file.list()));
+
+        t1.retainAll(t2);
+
+        // 使用迭代器的remove()方法删除元素
+        thisNode.getChild().entrySet().removeIf(entry -> !t1.contains(entry.getKey()));
     }
 
     /**
@@ -67,7 +99,12 @@ public class UpdateIndexCmd {
     public static boolean updateIndex(File file) throws IOException {
         String path = FileUtils.getCanonicalRelativePath(file, PitConfig.PIT_REPOSITORY);
         String fileName = file.getName();
-        String parentPath = path.substring(0, path.length() - fileName.length() - PitConfig.FILE_SEPARATOR.length());
+
+        String parentPath = "/";
+
+        if (path.length() > fileName.length()) {
+            parentPath = path.substring(0, path.length() - fileName.length() - PitConfig.FILE_SEPARATOR.length());
+        }
 
         IndexTree parent = searchParent(parentPath);
         IndexTree curFileNode;
@@ -123,6 +160,10 @@ public class UpdateIndexCmd {
      * @return IndexTree 节点
      */
     private static IndexTree searchParent(String parentPath) {
+        if (StringUtils.equal(PitConstant.ROOT_DIRECTORY_NAME, parentPath)) {
+            return root;
+        }
+
         IndexTree parent;
 
         // 从recent查找

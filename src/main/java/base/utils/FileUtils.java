@@ -115,7 +115,7 @@ public class FileUtils {
         } else {
 
             if (StringUtils.equal(cp, base)) {
-                return "";
+                return PitConstant.ROOT_DIRECTORY_NAME;
             } else {
                 int offset = base.length() + PitConfig.FILE_SEPARATOR.length();
 
@@ -124,5 +124,11 @@ public class FileUtils {
 
         }
 
+    }
+
+    public static String getFileName(String path) {
+        int idx = path.lastIndexOf(PitConfig.FILE_SEPARATOR);
+
+        return path.substring(idx + 1);
     }
 }
