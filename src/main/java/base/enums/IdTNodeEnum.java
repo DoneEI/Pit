@@ -3,34 +3,24 @@ package base.enums;
 import base.utils.StringUtils;
 
 /**
+ * 暂存区 树节点
+ *
  * @Author: DoneEI
- * @Since: 2021/1/21 8:34 下午
+ * @Since: 2021/1/24 10:44 下午
  **/
-public enum PitResultEnum {
-    /**
-     * 成功执行
-     */
-    SUCCESS("SUCCESS", "Success!"),
+public enum IdTNodeEnum {
 
     /**
-     * 出现错误
+     * 文件节点
      */
-    ERROR("ERROR", "Error!"),
+    FILE_NODE("FILE_NODE", "file"),
 
     /**
-     * 未知命令
+     * 文件夹节点
      */
-    UNKNOWN_COMMAND("UNKNOWN_COMMAND", "No such command!"),
+    DIRECTORY_NODE("DIRECTORY_NODE", "directory")
 
-    /**
-     * 不合法命令选项
-     */
-    INVALID_OPTION("INVALID_OPTION", "No such option for this command!"),
-
-    /**
-     * 不合法文件路径
-     */
-    INVALID_FILE_PATH("INVALID_FILE_PATH", "file path did not match any files");
+    ;
 
     /**
      * 枚举编码
@@ -42,7 +32,7 @@ public enum PitResultEnum {
      */
     private String description;
 
-    PitResultEnum(String code, String description) {
+    IdTNodeEnum(String code, String description) {
         this.code = code;
         this.description = description;
     }
@@ -54,8 +44,8 @@ public enum PitResultEnum {
      *            枚举code
      * @return 有则返回对应枚举，无则返回null
      */
-    public PitResultEnum getEnumByCode(String code) {
-        for (PitResultEnum oneEnum : PitResultEnum.values()) {
+    public IdTNodeEnum getEnumByCode(String code) {
+        for (IdTNodeEnum oneEnum : IdTNodeEnum.values()) {
             if (StringUtils.equal(code, oneEnum.getCode())) {
                 return oneEnum;
             }
