@@ -6,8 +6,8 @@ import base.enums.PitResultEnum;
 import base.exception.PitException;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * File 工具
@@ -52,14 +52,14 @@ public class FileUtils {
     }
 
     /**
-     * 以行读文件(不关心顺序) 字符流
+     * 以行读文件 字符流
      * 
      * @param file
      *            File对象
      * @return Set<String>
      */
-    public static Set<String> readFileByLines(File file) {
-        Set<String> lines = new HashSet<>();
+    public static List<String> readFileByLines(File file) {
+        List<String> lines = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
@@ -124,11 +124,5 @@ public class FileUtils {
 
         }
 
-    }
-
-    public static String getFileName(String path) {
-        int idx = path.lastIndexOf(PitConfig.FILE_SEPARATOR);
-
-        return path.substring(idx + 1);
     }
 }

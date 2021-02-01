@@ -1,5 +1,7 @@
 package base.utils;
 
+import java.util.List;
+
 /**
  * 输出工具
  *
@@ -16,6 +18,14 @@ public class OutputUtils {
     public static void output(Object object) {
         if (object != null) {
             System.out.println(object.toString());
+        }
+    }
+
+    public static void output(List<String> strings) {
+        if (strings != null && strings.size() != 0) {
+            for (String s : strings) {
+                output(s);
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -82,7 +83,7 @@ public class PitIgnore {
         excludeRules.put(false, new HashSet<>());
 
         if (file.exists()) {
-            Set<String> rules = FileUtils.readFileByLines(file);
+            List<String> rules = FileUtils.readFileByLines(file);
 
             for (String r : rules) {
                 // 移除行首行尾空格
