@@ -8,6 +8,7 @@ import base.utils.FileUtils;
 import base.utils.OutputUtils;
 import base.utils.StringUtils;
 import core.PitIgnore;
+import core.PitIndex;
 import core.command.BaseCmd;
 import core.command.internal.UpdateIndexCmd;
 
@@ -57,7 +58,7 @@ public class AddCmd extends BaseCmd {
             add(files);
 
             // 4.更新暂存区至pit仓库
-            UpdateIndexCmd.updateRoot();
+            PitIndex.updateIndexTree();
 
             // 5. 根据选项确定是否输出添加的文件
             if (currentOptions.contains("-o")) {
@@ -158,7 +159,7 @@ public class AddCmd extends BaseCmd {
                 add(f.listFiles());
 
                 if (!currentOptions.contains("-ir")) {
-                    UpdateIndexCmd.deleteRemovedFiles(f);
+                    PitIndex.deleteRemovedFiles(f);
                 }
             }
 
