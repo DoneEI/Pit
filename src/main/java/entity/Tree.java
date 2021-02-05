@@ -22,4 +22,14 @@ public class Tree implements Serializable {
      * 子节点(key:fileName,value:idx)
      */
     HashMap<String, String> child;
+
+    /**
+     * 返回Child 若无则创建一个空map
+     */
+    public HashMap<String, String> getChild(Boolean judge) {
+        if(child == null) {
+            child = new HashMap<>(2);
+        }
+        return getChild();
+    }
 }

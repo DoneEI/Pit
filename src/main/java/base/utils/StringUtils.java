@@ -1,5 +1,8 @@
 package base.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * 字符串工具
  *
@@ -32,6 +35,51 @@ public class StringUtils {
      */
     public static boolean isNotEmpty(String s) {
         return s != null && !"".equals(s);
+    }
+
+    /**
+     * @Description:去除首尾指定字符
+     * @param str  字符串
+     * @param element  指定字符
+     * @return: java.lang.String
+     */
+    public static String trimFirstAndLastChar(String str, String element){
+        boolean beginIndexFlag = true;
+        boolean endIndexFlag = true;
+        do{
+            int beginIndex = str.indexOf(element) == 0 ? 1 : 0;
+            int endIndex = str.lastIndexOf(element) + 1 == str.length() ? str.lastIndexOf(element) : str.length();
+            str = str.substring(beginIndex, endIndex);
+            beginIndexFlag = (str.indexOf(element) == 0);
+            endIndexFlag = (str.lastIndexOf(element) + 1 == str.length());
+        } while (beginIndexFlag || endIndexFlag);
+        return str;
+    }
+
+    /**
+     * @Description: 去掉指定字符串的开头的指定字符
+     * @param stream  原始字符串
+     * @param trim 要删除的字符串
+     * @return: java.lang.String
+     */
+    public static String StringStartTrim(String stream, String trim) {
+        // null或者空字符串的时候不处理
+        if (stream == null || stream.length() == 0 || trim == null || trim.length() == 0) {
+            return stream;
+        }
+        // 要删除的字符串结束位置
+        int end;
+        // 正规表达式
+        String regPattern = "[" + trim + "]*+";
+        Pattern pattern = Pattern.compile(regPattern, Pattern.CASE_INSENSITIVE);
+        // 去掉原始字符串开头位置的指定字符
+        Matcher matcher = pattern.matcher(stream);
+        if (matcher.lookingAt()) {
+            end = matcher.end();
+            stream = stream.substring(end);
+        }
+        // 返回处理后的字符串
+        return stream;
     }
 
 }

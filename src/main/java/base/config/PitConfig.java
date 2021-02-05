@@ -28,4 +28,14 @@ public class PitConfig {
      * 暂存区根节点
      */
     public static IndexTree INDEX_TREE_ROOT_NODE;
+
+    /**
+     * 作者名称
+     */
+    public static String AUTHOR_NAME;
+
+    /**
+     * 作者邮箱
+     */
+    public static String AUTHOR_EMAIL;
 }
